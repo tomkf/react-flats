@@ -55,4 +55,4 @@ const flatData = [
   }
 ];
 
-export default flats;
+export default flatData;
