@@ -4,7 +4,7 @@ export default class Flat extends React.Component {
 
 handleClick = event => {
 event.preventDefault();
-this.props.updateDefault(index)
+this.props.updateDefault(this.props.flat.index)
 }
 
     render() {

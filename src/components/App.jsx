@@ -1,35 +1,40 @@
 import React, {Component} from 'react';
 import FlatList from './FlatList.jsx';
+import Map from './Map.jsx';
 import flatData from '../../data/flats.js'
 import GoogleMapReact from 'google-map-react';
 
-
-//ad handlers for flat
-
-//pass this selected area to
-
+const apiKey = process.env.API_KEY
 
 class App extends Component {
       constructor(props) {
         super(props);
         this.state = {
-          defaultFlat = flatData[0],
-          flatCollection: flatData,
-          center: {lat: defaultFlat.lat,
-            lng: defaultFlat.lng}
+          defaultFlat: flatData[0],
+          flatCollection: flatData
         };
       }
 
-      updateDefault(selectedCard){
+      updateDefault= (selectedCard) => {
        this.setState({defaultFlat: flatData[selectedCard]})
       }
+
+center(){
+  const { defaultFlat } = this.state;
+
+  return {
+    lat: defaultFlat.lat,
+    lng: defaultFlat.lng
+  };
+}
 
 render(){
     return(<div className="content-box">
     <FlatList flats = {this.state.flatCollection} />
     <div className="map-container">
-          <GoogleMapReact defaultCenter={this.state.center} defaultZoom={12}>
-            <Marker lat={this.state.defaultFlat.lat} lng={this.state.defaultFlat.lng} />
+          <GoogleMapReact   bootstrapURLKeys={{ key: apiKey }}
+ defaultCenter={this.center()} defaultZoom={12}>
+            <Map lat={this.state.defaultFlat.lat} lng={this.state.defaultFlat.lng} />
           </GoogleMapReact>
         </div>
     </div>)
