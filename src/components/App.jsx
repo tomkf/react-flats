@@ -4,7 +4,7 @@ import Map from './Map.jsx';
 import flatData from '../../data/flats.js'
 import GoogleMapReact from 'google-map-react';
 
-const apiKey = process.env.API_KEY
+const apiKey = process.env.key
 
 class App extends Component {
       constructor(props) {
@@ -32,10 +32,12 @@ render(){
     return(<div className="content-box">
     <FlatList flats = {this.state.flatCollection} />
     <div className="map-container">
-          <GoogleMapReact   bootstrapURLKeys={{ key: apiKey }}
- defaultCenter={this.center()} defaultZoom={12}>
-            <Map lat={this.state.defaultFlat.lat} lng={this.state.defaultFlat.lng} />
-          </GoogleMapReact>
+      <GoogleMapReact  bootstrapURLKeys={{ key: apiKey }}
+       defaultCenter={this.center()} defaultZoom={12} 
+       yesIWantToUseGoogleMapApiInternals
+       onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}>
+      <Map lat={this.state.defaultFlat.lat} lng={this.state.defaultFlat.lng} />
+      </GoogleMapReact>
         </div>
     </div>)
 }
