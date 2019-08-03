@@ -15,7 +15,7 @@ class App extends Component {
         };
       }
 
-      updateDefault= (selectedCard) => {
+      updateDefault = (selectedCard) => {
        this.setState({defaultFlat: flatData[selectedCard]})
       }
 
@@ -34,8 +34,7 @@ render(){
     <div className="map-container">
       <GoogleMapReact  bootstrapURLKeys={{ key: apiKey }}
        defaultCenter={this.center()} defaultZoom={12} 
-       yesIWantToUseGoogleMapApiInternals
-       onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}>
+      >
       <Map lat={this.state.defaultFlat.lat} lng={this.state.defaultFlat.lng} />
       </GoogleMapReact>
         </div>
