@@ -1,8 +1,4 @@
-
-
-
-
-
+import React from 'react';
 
 // example flat: 
 // {
@@ -14,3 +10,18 @@
 //     lat: 48.884211,
 //     lng: 2.34689
 //   }
+
+export default class Flat extends React.Component {
+
+    render() {
+     const backImage = {
+        backgroundImage: `url('${this.props.flat.imageUrl}')`
+     }
+             return (
+                <div className="card-flat" style={backImage}>
+                <span>{this.props.flat.price}</span>
+                <p>{this.props.flat.name}</p>
+                </div>
+            )
+        }
+    }

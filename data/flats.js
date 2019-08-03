@@ -1,4 +1,4 @@
-const flats = [
+const flatData = [
   {
     name: "Charm at the Steps of the Sacre Coeur/Montmartre",
     imageUrl:
